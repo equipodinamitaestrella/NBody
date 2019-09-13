@@ -42,8 +42,7 @@ class Body:
 		
 	def getPos(self):
 		return self.pos
-	
-	def getVel(self):
+
 
 
 #testing:
