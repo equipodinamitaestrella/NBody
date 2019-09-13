@@ -20,19 +20,30 @@
 
 
 import numpy as np
+import math
 
 class Body:
-	def __init__(self, pos, vel):
+	def __init__(self, pos, vel, mass):
 		# pos and vel must be numpy arrays  
 		self.pos=pos
 		self.vel=vel
+		self.mass=mass
 	
 	def __repr__(self):
-		return f'Body(pos:{self.pos}, vel:{self.vel})'
+		return f'Body(pos:{self.pos}, vel:{self.vel}, mass:{self.mass})'
 	
 	def update_position(self, t_delta):
 		# t_delta is a scalar for transpired time
 		self.pos = self.pos + self.vel*t_delta
+		
+	def getKineticEnergy(self):
+		k = 0.5*self.mass*np.linalg.norm(self.vel)
+		return k
+		
+	def getPos(self):
+		return self.pos
+	
+	def getVel(self):
 
 
 #testing:
