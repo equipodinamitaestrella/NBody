@@ -1,4 +1,5 @@
 import numpy
+from Body import *
 
 """
 main.py solve the n-body problem using newton
@@ -18,3 +19,15 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>."""
+
+if __name__ == '__main__':
+    p0 = np.array([0.0, 0.0, 0.0]) #m
+    v0 = np.array([1.0, 1.0, 1.0]) #m/s
+    m = 1.0 #kg
+    dt = 1.0 #sec
+    G = 6.674e-11
+
+    A = Body(p0, v0, m)
+    for t in range(60):
+        A.update_position(dt)
+        print(A.getPos())
