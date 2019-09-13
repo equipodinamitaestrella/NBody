@@ -24,10 +24,16 @@ if __name__ == '__main__':
     p0 = np.array([0.0, 0.0, 0.0]) #m
     v0 = np.array([1.0, 1.0, 1.0]) #m/s
     m = 1.0 #kg
+
+    p1 = np.array([10.0, 0.0, 0.0]) #m
+    v1 = np.array([0.0, 0.0, 0.0]) #m/s
+    m1 = 1e24 #kg
+
+
     dt = 1.0 #sec
     G = 6.674e-11
 
     A = Body(p0, v0, m)
     for t in range(60):
-        A.update_position(dt)
+        A.update_position(dt, p1, m1)
         print(A.getPos())

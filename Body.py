@@ -22,7 +22,7 @@
 import numpy as np
 import math
 
-G = 6.674e-8 # for CGS
+G = 6.674e-11 # for CGS
 
 class Body:
 	def __init__(self, pos, vel, mass, acc=np.array([0,0,0])):
