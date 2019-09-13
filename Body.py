@@ -6,3 +6,7 @@ class Body:
 		self.pos=pos
 		self.vel=vel
 		return self
+	
+	def update_position(self, t_delta):
+		# t_delta is a scalar for transpired time
+		self.pos = self.pos + self.vel*t_delta
