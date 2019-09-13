@@ -16,24 +16,38 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>."""
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 import numpy as np
 import math
 
+G = 6.674e-8 # for CGS
+
 class Body:
-	def __init__(self, pos, vel, mass):
+	def __init__(self, pos, vel, mass, acc=np.array([0,0,0])):
 		# pos and vel must be numpy arrays  
 		self.pos=pos
 		self.vel=vel
 		self.mass=mass
+		self.acc=acc
 	
 	def __repr__(self):
-		return f'Body(pos:{self.pos}, vel:{self.vel}, mass:{self.mass})'
+		return f'Body(pos:{self.pos}, vel:{self.vel}, acc:{self.acc}, mass:{self.mass})'
 	
-	def update_position(self, t_delta):
+	def computeR(self,p1):
+		# Compute distance between objects
+		return np.linalg.norm(self.pos-p1)
+	
+	def computeU(self,p1):
+		# U is a numpy array in the direction of the other Body object
+		return p1-self.pos
+	
+	def update_position(self, t_delta, p1, m1):
 		# t_delta is a scalar for transpired time
+		r = self.computeR(p1)
+		u = self.computeU(p1)
+		self.vel = self.vel+(G*m1*t_delta/(r^3))*u
 		self.pos = self.pos + self.vel*t_delta
 		
 	def getKineticEnergy(self):
