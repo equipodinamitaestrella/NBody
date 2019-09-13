@@ -47,7 +47,7 @@ class Body:
 		# t_delta is a scalar for transpired time
 		r = self.computeR(p1)
 		u = self.computeU(p1)
-		self.vel = self.vel+(G*m1*t_delta/(r^3))*u
+		self.vel = self.vel+(G*m1*t_delta/(r**3))*u
 		self.pos = self.pos + self.vel*t_delta
 		
 	def getKineticEnergy(self):
