@@ -17,39 +17,12 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>."""
 
-import numpy
-from Body import *
-from plott import *
+import math
+import matplotlib
+import matplotlib.pyplot as plt
 
-if __name__ == '__main__':
-    p0 = np.array([1.0, 0.0, 0.0]) #m
-    v0 = np.array([0.0, 0.0, 0.0]) #m/s
-    m = 1.0 #kg
-
-    p1 = np.array([0.0, 0.0, 0.0]) #m
-    v1 = np.array([1.0, 0.0, 0.0]) #m/s
-    m1 = 1 #kg
-
-
-    dt = 0.01 #sec
-    G = 6.674e-11
-
-    A = Body(p0, v0, m)
-    B = Body(p1, v1, m1)
-
-    B.setdt(dt)
-
-    x = []
-    y = []
-    
-    x.append(0)
-    y.append(B.getPos()[0])
-
-    for t in range(1, 100):
-        #A.update_position(dt, p1, m1)
-        B.update_position(A)
-        print(B.getPos())
-        x.append(float(t)*dt)
-        y.append(B.getPos()[0])
-    
-    plott(x, y)
+def plott(x, y):
+    fig, ax = plt.subplots()
+    ax.set(xlabel = 'time[sec]', ylabel = 'distance[km]', title = 'N-Body')
+    ax.plot(x, y, label = 'caption')
+    plt.show()
