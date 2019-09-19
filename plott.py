@@ -18,6 +18,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>."""
 
 import math
+from Body import *
 import matplotlib
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -39,11 +40,14 @@ def plott(x, y, v, a):
 
     plt.show()
 
-def plot3d(x, y, v, a):
+def plot3d(x, y, v, a, A):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection = '3d')
     
     for point in y:
         ax.scatter(point[0], point[1], point[2], marker = 'o')
+
+    point = A.getPos()
+    ax.scatter(point[0], point[1], point[2], marker = 'o')
 
     plt.show()

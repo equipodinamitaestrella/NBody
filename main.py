@@ -22,16 +22,16 @@ from Body import *
 from plott import *
 
 if __name__ == '__main__':
-    p0 = np.array([1.0, 0.0, 0.0]) #m
+    p0 = np.array([5e-2, 1e-3, 0.0]) #m
     v0 = np.array([0.0, 0.0, 0.0]) #m/s
-    m = 1.0 #kg
+    m = 1e7 #kg
 
     p1 = np.array([0.0, 0.0, 0.0]) #m
     v1 = np.array([1.0, 0.0, 0.0]) #m/s
     m1 = 1 #kg
 
 
-    dt = 0.01 #sec
+    dt = 0.001 #sec
     G = 6.674e-11
 
     A = Body(p0, v0, m)
@@ -73,4 +73,4 @@ if __name__ == '__main__':
         x.append(float(t)*dt)
         y.append(B.getPos())
 
-    plot3d(x, y, v, a)
+    plot3d(x, y, v, a, A)
