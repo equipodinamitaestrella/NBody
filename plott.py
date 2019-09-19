@@ -20,6 +20,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>."""
 import math
 import matplotlib
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 def plott(x, y, v, a):
     fig, ax = plt.subplots(3)
@@ -35,5 +36,14 @@ def plott(x, y, v, a):
     ax[2].set(xlabel = 'time[sec]', ylabel = 'acceleration[km/s^2]')
     ax[2].plot(x, a, label = 'caption')
     ax[2].grid()
+
+    plt.show()
+
+def plot3d(x, y, v, a):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection = '3d')
+    
+    for point in y:
+        ax.scatter(point[0], point[1], point[2], marker = 'o')
 
     plt.show()
