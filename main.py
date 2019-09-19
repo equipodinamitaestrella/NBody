@@ -34,6 +34,9 @@ if __name__ == '__main__':
     G = 6.674e-11
 
     A = Body(p0, v0, m)
+    A.setdt(dt)
+    B = Body(p1, v1, m1)
     for t in range(60):
-        A.update_position(dt, p1, m1)
+        #A.update_position(dt, p1, m1)
+        A.update_position(B)
         print(A.getPos())
