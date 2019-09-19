@@ -42,20 +42,26 @@ if __name__ == '__main__':
     x = []
     y = []
     v = []
+    a = []
     
     x.append(0)
     y.append(B.getPos()[0])
     v.append(B.getVel()[0])
-
-    lastX = B.getPos()[0]
+    a.append(0.0)
+    v1 = B.getVel()[0]
 
     for t in range(1, 100):
-        #A.update_position(dt, p1, m1)
         lastX = B.getPos()[0]
+        lastV = v1
+
         B.update_position(A)
+        
         print(B.getPos())
+        
         x.append(float(t)*dt)
         y.append(B.getPos()[0])
-        v.append((B.getPos()[0] - lastX)/B.dt)
+        v1 = (B.getPos()[0] - lastX)/B.dt
+        v.append(v1)
+        a.append((v1 - lastV)/B.dt)
     
-    plott(x, y, v)
+    plott(x, y, v, a)
