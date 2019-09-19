@@ -21,8 +21,14 @@ import math
 import matplotlib
 import matplotlib.pyplot as plt
 
-def plott(x, y):
-    fig, ax = plt.subplots()
-    ax.set(xlabel = 'time[sec]', ylabel = 'distance[km]', title = 'N-Body')
-    ax.plot(x, y, label = 'caption')
+def plott(x, y, v):
+    fig, ax = plt.subplots(2)
+    ax[0].set(xlabel = 'time[sec]', ylabel = 'distance[km]', title = 'N-Body')
+    ax[0].plot(x, y, label = 'caption')
+    ax[0].grid()
+
+    ax[1].set(xlabel = 'time[sec]', ylabel = 'velocity[km/s]', title = 'N-Body')
+    ax[1].plot(x, v, label = 'caption')
+    ax[1].grid()
+
     plt.show()
