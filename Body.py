@@ -25,14 +25,17 @@ import math
 G = 6.674e-11 # for CGS
 
 class Body:
-	def __init__(self, pos, vel, mass, acc=np.array([0,0,0]), dt=0):
+	def __init__(self, pos, vel, mass, acc=np.array([0,0,0]), dt=1, F=np.array([0,0,0])):
 		# pos and vel must be numpy arrays  
 		self.pos=pos
 		self.vel=vel
 		self.mass=mass
 		self.acc=acc
 		self.dt=dt
-	
+		self.F=F
+		self.history_channel = [pos]
+		self.time = [0.0]
+
 	def __repr__(self):
 		return f'Body(pos:{self.pos}, vel:{self.vel}, acc:{self.acc}, mass:{self.mass})'
 	
@@ -44,17 +47,37 @@ class Body:
 		# U is a numpy array in the direction of the other Body object
 		return p1-self.pos
 	
-	def update_position(self, B):
+	def integrate(self, B):
 		# B is a Body object
 		# t_delta is a scalar for transpired time
 		r = self.computeR(B.pos)
 		u = self.computeU(B.pos)
-		self.vel = self.vel+(G*B.mass*self.dt/(r**3))*u
+		self.F = (G*B.mass*self.mass/(r**3))*u
+		self.acc = (G*B.mass/(r**3))*u
+		self.vel = self.vel + self.acc*self.dt
 		self.pos = self.pos + self.vel*self.dt
+		
+	def update_position(self, time):
+		self.pos = self.pos + self.vel*self.dt
+		self.time.append(time)
+		self.history_channel.append(self.pos)
 		
 	def getKineticEnergy(self):
 		k = 0.5*self.mass*np.linalg.norm(self.vel)
 		return k
+	
+	def computeV(self, B):
+		# B is a Body object
+		# t_delta is a scalar for transpired time
+		r = self.computeR(B.pos)
+		u = self.computeU(B.pos)
+		F = (G*B.mass*self.mass/(r**3))*u
+		acc = (G*B.mass/(r**3))*u
+		vel = acc*self.dt
+		return vel
+		
+	def updateV(self, v):
+		self.vel=self.vel + v
 		
 	def getPos(self):
 		return self.pos
@@ -64,6 +87,25 @@ class Body:
 	
 	def setdt(self,dt):
 		self.dt=dt
+		
+	def getTrajectory(self):
+		return self.time, self.history_channel
+		
+class Potential: # Calculate all forces between all particles and add them for each one to determine the total force
+	def __init__(self, system, dt):
+		self.system=system # set of Body objects
+		self.dt=dt
+	
+	def integrate(self, time):
+		for particle in self.system:
+			for other in self.system:
+				if other!=particle:
+					velocity = particle.computeV(other)
+					particle.updateV(velocity)
+		for particle in self.system:
+			particle.update_position(time)
+			
+		return self.system
 
 
 if __name__ == '__main__':
@@ -82,6 +124,8 @@ if __name__ == '__main__':
 	A = Body(p0, v0, m)
 	A.setdt(dt)
 	B = Body(p1, v1, m1)
-	for t in range(60):
-		A.update_position(B)
-		print(A.getPos())
+	twoBody = Potential([A,B], dt)
+	x=[]
+	y=[]
+	for t in range(1,100):
+		system = twoBody.integrate(float(t)*dt)
