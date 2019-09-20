@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     p1 = np.array([0.0, 0.0, 0.0]) #m
     v1 = np.array([1.0, 0.0, 0.0]) #m/s
-    m1 = 1 #kg
+    m1 = 1e7 #kg
 
 
     dt = 0.001 #sec
@@ -37,20 +37,23 @@ if __name__ == '__main__':
     A = Body(p0, v0, m)
     B = Body(p1, v1, m1)
 
-    B.setdt(dt)
+    particles = [A,B]
+    twoB = Potential(particles, dt)
+
+    #B.setdt(dt)
 
     x = []
     y = []
-    v = []
-    a = []
+    #v = []
+    #a = []
     
-    x.append(0)
+    #x.append(0)
     #y.append(B.getPos()[0])
     #v.append(B.getVel()[0])
-    y.append(B.getPos())
-    v.append(B.getVel())
-    a.append(0.0)
-    v1 = B.getVel()[0]
+    #y.append(B.getPos())
+    #v.append(B.getVel())
+    #a.append(0.0)
+    #v1 = B.getVel()[0]
 
     """
     for t in range(1, 100):
@@ -68,9 +71,16 @@ if __name__ == '__main__':
         a.append((v1 - lastV)/B.dt)
     """
 
+    """
     for t in range(1, 100):
         B.update_position(A)
         x.append(float(t)*dt)
         y.append(B.getPos())
+    """
 
-    plot3d(x, y, v, a, A)
+    for t in range(1, 100):
+        system = twoB.integrate(float(t)*dt)
+
+    #plot3d(x, y, v, a, A)
+
+    dynamicPLot3d(system, particles)

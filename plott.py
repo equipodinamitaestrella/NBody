@@ -51,3 +51,20 @@ def plot3d(x, y, v, a, A):
     ax.scatter(point[0], point[1], point[2], marker = 'o')
 
     plt.show()
+
+def dynamicPLot3d(system, particles):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection = '3d')
+
+    i = 0
+    c = ['g', 'r']
+
+    for particle in particles:
+        time, trajectory = particle.getTrajectory()
+        for x, y in zip(time, trajectory):
+            ax.scatter(y[0], y[1], y[2], marker = 'o', c = c[i])
+        i += 1
+
+    plt.show()
+
+            
