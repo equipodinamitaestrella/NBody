@@ -77,10 +77,19 @@ if __name__ == '__main__':
         x.append(float(t)*dt)
         y.append(B.getPos())
     """
-
+    Sun_pos = np.array([0,0,0])
+    Sun_mass = 1.989e30
+    Earth_mass = 5.972e24
+    Earth_pos = np. array([149600000000,0,0])
+    Earth_vel = np.array([0,20000,0])
+    Earth = Body(Earth_pos, Earth_vel, Earth_mass)
+    Sun = Body(Sun_pos, np.array([0,0,0]), Sun_mass)
+    planets=[Earth, Sun]
+    solar_system = Potential(planets, 1e20)
     for t in range(1, 100):
-        system = twoB.integrate(float(t)*dt)
+        #system = twoB.integrate(float(t)*dt)
+        system = solar_system.integrate(float(t)*1e20)
 
     #plot3d(x, y, v, a, A)
 
-    dynamicPLot3d(system, particles)
+    dynamicPLot3d(system, planets)
