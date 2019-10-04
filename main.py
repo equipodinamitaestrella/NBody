@@ -22,22 +22,26 @@ from Body import *
 from plott import *
 
 if __name__ == '__main__':
-    p0 = np.array([5e-2, 1e-3, 0.0]) #m
+    dt = 0.01 #sec
+    lenTime = 5.0 #sec
+
+    n_steps = int(lenTime/dt)
+
+    p0 = np.array([0.001, 0.0, 0.0]) #m
     v0 = np.array([0.0, 0.0, 0.0]) #m/s
-    m = 1e7 #kg
+    m = 1e1 #kg
 
     p1 = np.array([0.0, 0.0, 0.0]) #m
-    v1 = np.array([1.0, 0.0, 0.0]) #m/s
-    m1 = 1e7 #kg
+    v1 = np.array([0.0, 0.0, 0.0]) #m/s
+    m1 = 1e1 #kg
 
-
-    dt = 0.001 #sec
     G = 6.674e-11
 
     A = Body(p0, v0, m)
     B = Body(p1, v1, m1)
+    C = Body([0.0, 0.001, 0.0], [0.0, 0.0, 0.0], 1e1)
 
-    particles = [A,B]
+    particles = [A, B, C]
     twoB = Potential(particles, dt)
 
     #B.setdt(dt)
@@ -77,6 +81,8 @@ if __name__ == '__main__':
         x.append(float(t)*dt)
         y.append(B.getPos())
     """
+
+    """
     Sun_pos = np.array([0,0,0])
     Sun_mass = 1.989e30
     Earth_mass = 5.972e24
@@ -86,10 +92,13 @@ if __name__ == '__main__':
     Sun = Body(Sun_pos, np.array([0,0,0]), Sun_mass)
     planets=[Earth, Sun]
     solar_system = Potential(planets, 1e20)
-    for t in range(1, 100):
-        #system = twoB.integrate(float(t)*dt)
-        system = solar_system.integrate(float(t)*1e20)
+    """
+
+    for t in range(1, n_steps):
+        system = twoB.integrate(float(t)*dt)
+
+        #system = solar_system.integrate(float(t)*1e20)
 
     #plot3d(x, y, v, a, A)
 
-    dynamicPLot3d(system, planets)
+    dynamicPLot3d(system, particles)
