@@ -32,7 +32,7 @@ if __name__ == '__main__':
     m = 1e1 #kg
 
     p1 = np.array([0.0, 0.0, 0.0]) #m
-    v1 = np.array([0.0, 0.0, 0.0]) #m/s
+    v1 = np.array([0.0, 0.0, 1e-3]) #m/s
     m1 = 1e1 #kg
 
     G = 6.674e-11
