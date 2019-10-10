@@ -57,7 +57,7 @@ def dynamicPLot3d(system, particles):
     ax = fig.add_subplot(111, projection = '3d')
 
     i = 0
-    c = ['g', 'r', 'b']
+    c = ['g', 'r', 'b', 'r', 'g', 'b', 'r', 'g', 'b', 'r']
 
     for particle in particles:
         time, trajectory = particle.getTrajectory()
