@@ -57,10 +57,11 @@ class Body:
 		self.vel = self.vel + self.acc*self.dt
 		self.pos = self.pos + self.vel*self.dt
 		
-	def update_position(self, time):
+	def update_position(self, time, save):
 		self.pos = self.pos + self.vel*self.dt
-		self.time.append(time)
-		self.history_channel.append(self.pos)
+		if save:
+			self.time.append(time)
+			self.history_channel.append(self.pos)
 		
 	def getKineticEnergy(self):
 		k = 0.5*self.mass*np.linalg.norm(self.vel)
@@ -96,14 +97,14 @@ class Potential: # Calculate all forces between all particles and add them for e
 		self.system=system # set of Body objects
 		self.dt=dt
 	
-	def integrate(self, time):
+	def integrate(self, time, save):
 		for particle in self.system:
 			for other in self.system:
 				if other!=particle:
 					velocity = particle.computeV(other)
 					particle.updateV(velocity)
 		for particle in self.system:
-			particle.update_position(time)
+			particle.update_position(time, save)
 			
 		return self.system
 
