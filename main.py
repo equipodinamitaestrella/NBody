@@ -22,11 +22,24 @@ from Body import *
 from plott import *
 
 if __name__ == '__main__':
-    dt = 0.01 #sec
-    lenTime = 5.0 #sec
+    sun = Body(np.array([0,0,0]), np.array([0,0,0]), 2e30)
+    mercury = Body(np.array([0,5.7e10,0]), np.array([47000,0,0]), 3.285e23)
+    venus = Body(np.array([0, 1.1e11, 0]), np.array([35000,0,0]), 4.8e24)
+    earth = Body(np.array([0, 1.5e11, 0]), np.array([30000, 0, 0]), 6e24)
+    mars = Body(np.array([0.0,2.2e11,0.0]), np.array([24000.0,0.0,0.0]), 2.4e24)
+    jupiter = Body(np.array([0.0, 7.7e11, 0.0]), np.array([13000, 0.0, 0.0]), 1e28)
+    saturn = Body(np.array([0,1.4e12,0]), np.array([9000,0,0]), 5.7e26)
+    uranus = Body(np.array([0,2.8e12,0]), np.array([6835,0,0]), 8.7e25)
+    neptune = Body(np.array([0,4.5e12,0]), np.array([5477,0,0]), 1e26)
+    pluto = Body(np.array([0,3.7e12,0]), np.array([4748,0,0]), 1.3e22)
+
+    dt = 1 #sec
+    lenTime = 3600*24*90 #sec
 
     n_steps = int(lenTime/dt)
+    print(n_steps)
 
+    """
     p0 = np.array([0.001, 0.0, 0.0]) #m
     v0 = np.array([0.0, 0.0, 0.0]) #m/s
     m = 1e1 #kg
@@ -45,7 +58,9 @@ if __name__ == '__main__':
     twoB = Potential(particles, dt)
 
     #B.setdt(dt)
-
+    """
+    particles = [sun, mercury, venus, earth]
+    solar_system = Potential(particles, dt)
     x = []
     y = []
     #v = []
@@ -93,12 +108,18 @@ if __name__ == '__main__':
     planets=[Earth, Sun]
     solar_system = Potential(planets, 1e20)
     """
-
+    skip = 10000
+    save = False
     for t in range(1, n_steps):
-        system = twoB.integrate(float(t)*dt)
-
+        if skip == 10:
+            skip = 0
+            save = True
+            print(t, n_steps)    
+        system = solar_system.integrate(float(t)*dt, save)
+        save = False
+        skip += 1
         #system = solar_system.integrate(float(t)*1e20)
 
     #plot3d(x, y, v, a, A)
-
+    print("plot?")
     dynamicPLot3d(system, particles)
