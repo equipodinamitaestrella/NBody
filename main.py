@@ -20,6 +20,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>."""
 import numpy
 from Body import *
 from plott import *
+import time
 
 if __name__ == '__main__':
     sun = Body(np.array([0,0,0]), np.array([0,0,0]), 2e30)
@@ -108,10 +109,11 @@ if __name__ == '__main__':
     planets=[Earth, Sun]
     solar_system = Potential(planets, 1e20)
     """
-    skip = 10000
+    skip = 0
+    start = time.time()
     save = False
     for t in range(1, n_steps):
-        if skip == 10:
+        if skip == 1000:
             skip = 0
             save = True
             print(t, n_steps)    
@@ -120,6 +122,8 @@ if __name__ == '__main__':
         skip += 1
         #system = solar_system.integrate(float(t)*1e20)
 
+    stop = time.time()
+    print(stop-start)
     #plot3d(x, y, v, a, A)
     print("plot?")
     dynamicPLot3d(system, particles)
