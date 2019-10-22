@@ -22,6 +22,10 @@ from Body import *
 import matplotlib
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.animation import FuncAnimation
+
+i=0
+step = 0
 
 def plott(x, y, v, a):
     fig, ax = plt.subplots(3)
@@ -52,19 +56,19 @@ def plot3d(x, y, v, a, A):
 
     plt.show()
 
-def dynamicPLot3d(system, particles):
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection = '3d')
+def dynamicPLot3d(system, particles,step):
+    #fig = plt.figure()
+    #ax = fig.add_subplot(111, projection = '3d')
 
-    i = 0
-    c = ['g', 'r', 'b', 'r', 'g', 'b', 'r', 'g', 'b', 'r']
-
-    for particle in particles:
-        time, trajectory = particle.getTrajectory()
-        for x, y in zip(time, trajectory):
-            ax.scatter(y[0], y[1], y[2], marker = 'o', c = c[i])
-        i += 1
-
-    plt.show()
+    #global i
+    #global step
+    #c = ['g', 'r', 'b', 'r']
+    trajectories = np.zeros((len(particles),3))
+    for j in range(len(particles)):
+        trajectories[j] = particles[j].history_channel[step]
+        #ax.scatter(y[0], y[1], y[2], marker = 'o', c = c[i])
+        #i = (i+1)%4
+    #step+=1
+    return trajectories
 
             

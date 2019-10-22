@@ -20,6 +20,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>."""
 import numpy
 from Body import *
 from plott import *
+from matplotlib.animation import FuncAnimation
 import time
 
 if __name__ == '__main__':
@@ -27,15 +28,15 @@ if __name__ == '__main__':
     mercury = Body(np.array([0,5.7e10,0]), np.array([47000,0,0]), 3.285e23)
     venus = Body(np.array([0, 1.1e11, 0]), np.array([35000,0,0]), 4.8e24)
     earth = Body(np.array([0, 1.5e11, 0]), np.array([30000, 0, 0]), 6e24)
-    mars = Body(np.array([0.0,2.2e11,0.0]), np.array([24000.0,0.0,0.0]), 2.4e24)
-    jupiter = Body(np.array([0.0, 7.7e11, 0.0]), np.array([13000, 0.0, 0.0]), 1e28)
-    saturn = Body(np.array([0,1.4e12,0]), np.array([9000,0,0]), 5.7e26)
-    uranus = Body(np.array([0,2.8e12,0]), np.array([6835,0,0]), 8.7e25)
-    neptune = Body(np.array([0,4.5e12,0]), np.array([5477,0,0]), 1e26)
-    pluto = Body(np.array([0,3.7e12,0]), np.array([4748,0,0]), 1.3e22)
+    #mars = Body(np.array([0.0,2.2e11,0.0]), np.array([24000.0,0.0,0.0]), 2.4e24)
+    #jupiter = Body(np.array([0.0, 7.7e11, 0.0]), np.array([13000, 0.0, 0.0]), 1e28)
+    #saturn = Body(np.array([0,1.4e12,0]), np.array([9000,0,0]), 5.7e26)
+    #uranus = Body(np.array([0,2.8e12,0]), np.array([6835,0,0]), 8.7e25)
+    #neptune = Body(np.array([0,4.5e12,0]), np.array([5477,0,0]), 1e26)
+    #pluto = Body(np.array([0,3.7e12,0]), np.array([4748,0,0]), 1.3e22)
 
     dt = 1 #sec
-    lenTime = 3600*24*90 #sec
+    lenTime = 3600*24*5 #sec
 
     n_steps = int(lenTime/dt)
     print(n_steps)
@@ -113,7 +114,7 @@ if __name__ == '__main__':
     start = time.time()
     save = False
     for t in range(1, n_steps):
-        if skip == 1000:
+        if skip == 20000:
             skip = 0
             save = True
             print(t, n_steps)    
@@ -126,4 +127,24 @@ if __name__ == '__main__':
     print(stop-start)
     #plot3d(x, y, v, a, A)
     print("plot?")
-    dynamicPLot3d(system, particles)
+    step = 0
+    i = 0
+    def animate(time):
+        c = ['g', 'r', 'b', 'g', 'r']
+        global i
+        global step
+        if step >= len(particles[0].history_channel):
+            return
+        trajectory = dynamicPLot3d(system, particles,step)
+        step+=1
+        for j in range(trajectory.shape[0]):
+            anima = ax.scatter(trajectory[j][0], trajectory[j][1], trajectory[j][2], marker='o', c = c[i])
+            i = (i+1)%len(c)
+        return anima
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection = '3d')
+    anim = FuncAnimation(fig, animate,
+                               frames=30, interval=5)
+    plt.show()
+    anim.save('animation.gif', writer='imagemagick', fps=10)
+    #dynamicPLot3d(system, particles)
