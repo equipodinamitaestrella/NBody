@@ -22,6 +22,7 @@ from Body import *
 from plott import *
 from matplotlib.animation import FuncAnimation
 import time
+import matplotlib.animation as animation
 
 if __name__ == '__main__':
 
@@ -32,11 +33,12 @@ if __name__ == '__main__':
     callilsto = Body(np.array([0, 1883000000, 0]), np.array([8204, 0, 0]), 1.08e23)
 
     dt = 1 #sec
-    lenTime = 3600*24*40 #sec
+    lenTime = 3600*24*8 #sec
 
     n_steps = int(lenTime/dt)
     print(n_steps)
-
+    Writer = animation.writers['ffmpeg']
+    writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=3600)
     particles = [jupyter, io, europe, ganymede, callilsto]
     jupyter_moons = Potential(particles, dt)
     x = []
@@ -46,7 +48,7 @@ if __name__ == '__main__':
     start = time.time()
     save = False
     for t in range(1, n_steps):
-        if skip == 1000:
+        if skip == 1500:
             skip = 0
             save = True
             print((t*100)/n_steps, "%")    
@@ -75,6 +77,6 @@ if __name__ == '__main__':
     fig = plt.figure()
     ax = fig.add_subplot(111, projection = '3d')
     anim = FuncAnimation(fig, animate,
-                               frames=30, interval=5)
+                               save_count=n_steps, interval=5)
     plt.show()
-    anim.save('animation.gif', writer='imagemagick', fps=10)
+    anim.save('animation.mp4', writer=writer)
