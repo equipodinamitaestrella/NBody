@@ -1,0 +1,6 @@
+List of required python libraries to be able to execute the program:
+
+Python 3
+numpy  1.16.2
+matplotlib 3.0.3
+ffmpeg 4.2

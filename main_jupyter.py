@@ -26,7 +26,7 @@ import matplotlib.animation as animation
 
 if __name__ == '__main__':
 
-    jupyter = Body(np.array([0, 0, 0]), np.array([0, 0, 0]), 1.898e27)
+    jupyter = Body(np.array([0, 0, 0]), np.array([0, 0, 0]), 1.898e27) #(m, m/s, kg)
     io = Body(np.array([0, 422000000, 0]), np.array([17334, 0, 0]), 8.94e22)
     europe = Body(np.array([0, 671000000, 0]), np.array([13740, 0, 0]), 4.80e22)
     ganymede = Body(np.array([0, 1070000000, 0]), np.array([10880, 0, 0]), 1.48e23)
