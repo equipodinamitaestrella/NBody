@@ -60,7 +60,10 @@ Therefore, we will take advantage of this N-Body Problem model to predict Jupite
 
 ## Methodology
 For the reproducibility of our results, please consider the following: <br>
-**To make calculations a little bit easier and to reduce computation costs, moons were taken as if they orbit in the same plane and were initialized aligned in their correspondant orbits.** <br>
+* Our code is based on the code we developed in _Modeling and simulation_ class at ENES UNIDAD MORELIA, UNAM. Its main file is included in this repository as _main.py_. 
+* To make things easier to handle, we also created different files for the plotting function (named _plott.py_) and the definition of the classes we will be using (named _Body.py_).
+* The main file of _Jupiter's Moons and the N-Body Problem_ is named _main_jupyter.py_ .
+* **To make calculations a little bit easier and to reduce computation costs, moons were taken as if they orbit in the same plane and were initialized aligned in their correspondant orbits.**
 
 ### Initial conditions
 1) **Jupyter** <br> 
@@ -92,7 +95,7 @@ dt = 1 s <br>
 lenTime = 3600 * 24 * 8 s <br>
 
 ### Execution
-After you have dowloaded this repository, run this project by executing the following on your command line:
+After you have downloaded this repository, run this project by executing the following on your command line:
 
 bash testing.sh
 
@@ -102,26 +105,33 @@ With the aforementioned initial conditions, our  final simulation came out as fo
 
 ## Conclusions
 We simulated eight days of Io's, Europa's, Ganymede's and Callisto's orbits, and out of this, we can conclude the following: <br>
-1) First of all, we chose eight days of simulation because Galileo discovered those four moons in that period of time, so we were curious about how much he could have observed in such little days that made him find them out. At first, as we metioned before, he thought there were only three stars. He found that those stars did not twinkle, so he started with his own conclusions of what it could be. Then, he noticed the way those stars moved, and it looked like they were moving _around_ Jupiter, that made him think those were also planets. Finally he found that there were four stars, even before seeing them all at the same time. Everything in less than eight days. So, what he pointed out the most the whole time, was the changing in the stars' positions and sizes, and the way they were moving, which we can actually observe through our simulation.
+1) First of all, we chose eight days of simulation because Galileo discovered those four moons in that period of time, so we were curious about how much he could have observed in such little days that made him find them out. What he pointed out the most the whole time, was the changing in the stars' positions and sizes, and the way they were moving, which we can actually observe through our simulation.
 2) Three out of four of the largest moons of Jupiter can go around it in less than eight days, which means their traslation movement is relatively fast despite Jupiter's size. At first it looked a little bit strange that Galileo could observe such big changes in the _stars'_ positions in lapses of few hours, but now we could prove that it is indeed possible and Galileo was right.
 3) Unfortunately we cannot claim we did an exact representation of what Galileo saw since we do not know if the moons were aligned the exact same way we initialized them back in January 7th 1610 (probably not), so we cannot tell many details on how things actually occurred. Still, it would be interesting to try to do an actuall simulation of _those_ 40 days in 1610.
-4) Through the animation we could observe how objects closer to the center of gravity of a system use to have bigger orbital speeds, and this happens because speed and acceleration of a satellite are only dependent upon the radius of orbit and the mass of the central body that the satellite is orbiting.
+4) Through the animation we could observe how objects closer to the center of gravity of a system tend to have higher orbital speeds. This happens because the speed and acceleration of a satellite are only dependent upon the radius of orbit and the mass of the central body that the satellite is orbiting.
 
 ## Bibliography
 
-Title: N-body problem
-Authors: Bhatnagar, K. B. & Saha, L. M.
-Journal: Astronomical Society of India, Bulletin (ISSN 0304-9523), vol. 21, no. 1, p. 1-25
-Bibliographic Code: 1993BASI...21....1B
-Link: http://articles.adsabs.harvard.edu//full/1993BASI...21....1B/0000001.000.html
+[1] Title: N-body problem
+Authors: Bhatnagar, K. B. & Saha, L. M.<br>
+Journal: Astronomical Society of India, Bulletin (ISSN 0304-9523), vol. 21, no. 1, p. 1-25 <br>
+Bibliographic Code: 1993BASI...21....1B <br>
+Link: http://articles.adsabs.harvard.edu//full/1993BASI...21....1B/0000001.000.html <br>
 
-http://www.astrosen.unam.mx/~aguilar/MySite/Outreach_files/Nbody1_eng.pdf<br>
-https://www.ceremade.dauphine.fr/~fejoz/Articles/Fejoz_2014_nbp.pdf<br>
-http://cosweb1.fau.edu/~jmirelesjames/introductionNotes.pdf<br>
-https://gereshes.com/2018/05/07/what-is-the-n-body-problem/<br>
-https://arxiv.org/abs/astro-ph/0503600<br>
-https://www.cs.usask.ca/~spiteri/CMPT851/notes/nBody.pdf<br>
-http://www.cs.hut.fi/~ctl/NBody.pdf<br>
-https://nineplanets.org/jupiter/ <br>
-http://solarviews.com/eng/galdisc.htm <br>
-http://people.reed.edu/~wieting/mathematics537/SideriusNuncius.pdf <br>
+[2] Luis A. Aguilar. (--). The N-Body Problem. 09/20/2019, from UNAM Link: http://www.astrosen.unam.mx/~aguilar/MySite/Outreach_files/Nbody1_eng.pdf 
+
+[3] Jacques F´ejoz. (--). The N-body problem. 09/20/2019, from Universit´e Paris-Dauphine & Observatoire de Paris Link: https://www.ceremade.dauphine.fr/~fejoz/Articles/Fejoz_2014_nbp.pdf
+
+[4] J.D. Mireles James. (2007). Celestial Mechanics Notes Set 1: Introduction to the N-Body Problem. 09/20/2019, de -- Link: http://cosweb1.fau.edu/~jmirelesjames/introductionNotes.pdf
+
+[5] --. (2018). WHAT IS THE N-BODY PROBLEM?. 09/20/2019, Link: https://gereshes.com/2018/05/07/what-is-the-n-body-problem/
+
+[6] Douglas C. Heggie. (2005). The Classical Gravitational N-Body Problem. 09/20/2019, from Cornell University Link: https://arxiv.org/abs/astro-ph/0503600
+
+[7] Tancred Lindholm,. (1999). N-body algorithms. 09/20/2019, from -- Link: http://www.cs.hut.fi/~ctl/NBody.pdf
+
+[8] The Nine Planets. (--). Jupiter. 10/22/2019,  Web page: https://nineplanets.org/jupiter/
+
+[9] Calvin J. Hamilton. (2009). The Discovery of the Galilean Satellites. 10/22/2019, Web page: http://solarviews.com/eng/galdisc.htm
+
+[10] Albert Van Helden. (1989). English Translation Galileo Galilei Sidereus Nuncius Venice, 1610. 10/22/2019, from The University of Chicago Link: http://people.reed.edu/~wieting/mathematics537/SideriusNuncius.pdf
