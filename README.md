@@ -3,7 +3,7 @@
 ## Summary
 Jupiter is the fifth planet from the Sun and by far the largest. Jupiter is more than twice as massive as all the other planets combined (the mass of Jupiter is 318 times that of Earth). Jupiter has around 70-80 known moons, many of which haven't been named yet. Due to it's size, Jupiter has lots of gravity, thus its moons have huge gravitational interactions through their rotation and translation movements.
 
-This project pretends to simulate the trajectory of Jupiter's four biggests moons, also known as _the Galilean moons_, as well as their interactions, so we can make observations and reach some conclutions. The model we will draw on was created using the _N-Body problem_. In the next sections you will find a concise explanation of what the N-Body problem is, and how it helped us to solve our problem.
+This project pretends to simulate the trajectory of Jupiter's four biggests moons, also known as _the Galilean moons_, as well as their interactions, so we can make observations and reach some conclusions. The model we will draw on was created using the _N-Body problem_. In the next sections you will find a concise explanation of what the N-Body problem is, and how it helped us to solve our problem.
 
 ## Objectives
 1) Understand the _N-Body problem_.
