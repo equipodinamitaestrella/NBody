@@ -1,9 +1,9 @@
 # Jupiter's Moons and the N-Body Problem
 
 ## Summary
-Jupiter is the fifth planet from the Sun and by far the largest. Jupiter is more than twice as massive as all the other planets combined (the mass of Jupiter is 318 times that of Earth). Jupiter has around 70-80 known moons, many of which haven't been named yet. Due to it's size, Jupiter has lots of gravity, thus its moons have huge gravitational interactions through their rotation and translation movements.
+Jupiter is the fifth planet from the Sun and by far the largest. Jupiter is more than twice as massive as all the other planets combined (the mass of Jupiter is 318 times that of Earth). Jupiter has around 70-80 known moons, many of which haven't been named yet. Due to it's size, Jupiter has lots of gravity, thus its moons have huge gravitational interactions through their rotation and traslation movements.
 
-This project pretends to simulate the trajectory of Jupiter's four biggests moons, also known as _the Galilean moons_, as well as their interactions, so we can make observations and reach some conclusions. The model we will draw on was created using the _N-Body problem_. In the next sections you will find a concise explanation of what the N-Body problem is, and how it helped us to solve our problem.
+This project pretends to simulate the trajectory of Jupiter's four lagest moons, also known as _the Galilean moons_, as well as their interactions, so we can make observations and reach some conclusions. The model we will draw on was created using the _N-Body problem_. In the next sections you will find a concise explanation of what the N-Body problem is, and how it helped us to solve our problem.
 
 ## Objectives
 1) Understand the _N-Body problem_.
@@ -60,7 +60,8 @@ Therefore, we will take advantage of this N-Body Problem model to predict Jupite
 
 ## Methodology
 For the reproducibility of our results, please consider the following: <br>
-**To make calculations a little bit easier and to reduce computation costs, moons were taken as if they orbit in the same plane and were initialized aligned in the same position.**
+**To make calculations a little bit easier and to reduce computation costs, moons were taken as if they orbit in the same plane and were initialized aligned in their correspondant orbits.** <br>
+
 ### Initial conditions
 1) **Jupyter** <br> 
 &nbsp;&nbsp;&nbsp; position = [0, 0, 0] m <br>
@@ -87,12 +88,24 @@ mass = 1.08e23 kg <br>
 6) **dt** <br>
 dt = 1 s <br>
 
-7) **Time** <br>
+7) **Simulation time** <br>
 lenTime = 3600 * 24 * 8 s <br>
 
+### Execution
+After you have dowloaded this repository, run this project by executing the following on your command line:
+
+bash testing.sh
+
 ## Results
+With the aforementioned initial conditions, our  final simulation came out as follows: <br>
+[![Watch on Youtube: https://youtu.be/1iNjpaS8yX8](https://img.youtube.com/vi/1iNjpaS8yX8/0.jpg)](https://www.youtube.com/watch?v=1iNjpaS8yX8)
 
 ## Conclusions
+We simulated eight days of Io's, Europa's, Ganymede's and Callisto's orbits, and out of this, we can conclude the following: <br>
+1) First of all, we chose eight days of simulation because Galileo discovered those four moons in that period of time, so we were curious about how much he could have observed in such little days that made him find them out. At first, as we metioned before, he thought there were only three stars. He found that those stars did not twinkle, so he started with his own conclusions of what it could be. Then, he noticed the way those stars moved, and it looked like they were moving _around_ Jupiter, that made him think those were also planets. Finally he found that there were four stars, even before seeing them all at the same time. Everything in less than eight days. So, what he pointed out the most the whole time, was the changing in the stars' positions and sizes, and the way they were moving, which we can actually observe through our simulation.
+2) Three out of four of the largest moons of Jupiter can go around it in less than eight days, which means their traslation movement is relatively fast despite Jupiter's size. At first it looked a little bit strange that Galileo could observe such big changes in the _stars'_ positions in lapses of few hours, but now we could prove that it is indeed possible and Galileo was right.
+3) Unfortunately we cannot claim we did an exact representation of what Galileo saw since we do not know if the moons were aligned the exact same way we initialized them back in January 7th 1610 (probably not), so we cannot tell many details on how things actually occurred. Still, it would be interesting to try to do an actuall simulation of _those_ 40 days in 1610.
+4) Through the animation we could observe how objects closer to the center of gravity of a system use to have bigger orbital speeds, and this happens because speed and acceleration of a satellite are only dependent upon the radius of orbit and the mass of the central body that the satellite is orbiting.
 
 ## Bibliography
 
