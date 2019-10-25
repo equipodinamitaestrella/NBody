@@ -101,7 +101,8 @@ bash testing.sh
 
 ## Results
 With the aforementioned initial conditions, our  final simulation came out as follows: <br>
-[![Watch on Youtube: https://youtu.be/1iNjpaS8yX8](https://img.youtube.com/vi/1iNjpaS8yX8/0.jpg)](https://www.youtube.com/watch?v=1iNjpaS8yX8)
+[![Watch on Youtube: https://youtu.be/1iNjpaS8yX8](https://img.youtube.com/vi/1iNjpaS8yX8/0.jpg)](https://www.youtube.com/watch?v=1iNjpaS8yX8) <br>
+_Click the image!_
 
 ## Conclusions
 We simulated eight days of Io's, Europa's, Ganymede's and Callisto's orbits, and out of this, we can conclude the following: <br>
