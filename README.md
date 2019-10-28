@@ -5,11 +5,6 @@ Jupiter is the fifth planet from the Sun and by far the largest. Jupiter is more
 
 This project pretends to simulate the trajectory of Jupiter's four largest moons, also known as _the Galilean moons_, as well as their interactions, so we can make observations and reach some conclusions. The model we will draw on was created using the _N-Body problem_. In the next sections you will find a concise explanation of what the N-Body problem is, and how it helped us to solve our problem.
 
-## Objectives
-1) Understand the _N-Body problem_.
-2) Analyze the behavior of the orbits of Jupiter's moons through plotting the simulation of a model based on the N-Body problem.
-3) Compare our results and observations to Galileo's contribution back in 1610.
-
 ## Introduction
 Probably the most significent contribution that Galileo Galilei made to science was the discovery of the four satellites around Jupiter that are now named in his honor. Galileo first observed the moons of Jupiter on January 7, 1610 through a homemade telescope. He originally thought he saw three stars near Jupiter, strung out in a line through the planet. The next evening, these stars seemed to have moved the wrong way, which caught his attention. Galileo continued to observe the stars and Jupiter for the next week. On January 11, a fourth star (which would later turn out to be Ganymede) appeared. After a week, Galileo had observed that the four stars never left the vicinity of Jupiter and appeared to be carried along with the planet, and that they changed their position with respect to each other and Jupiter. Finally, Galileo determined that what he was observing were not stars, but planetary bodies that were in orbit around Jupiter. This discovery provided evidence in support of the Copernican system and showed that everything did not revolve around the Earth.<br>
 Galileo published his observations in Sidereus Nuncius in March 1610. The following pictures show his notes to the eight first days of observation:<br>
@@ -57,6 +52,11 @@ particle **x** having a mass _m_ is then expressed as:<br>
 where G is the gravitational constant.
 
 Therefore, we will take advantage of this N-Body Problem model to predict Jupiter's moons positions through the time, so we can make a simulation of their orbits around this planet by setting up some initial conditions and plotting our results.
+
+## Objectives
+1) Understand the _N-Body problem_.
+2) Analyze the behavior of the orbits of Jupiter's moons through plotting the simulation of a model based on the N-Body problem.
+3) Compare our results and observations to Galileo's contribution back in 1610.
 
 ## Methodology
 For the reproducibility of our results, please consider the following: <br>
@@ -123,13 +123,13 @@ Link: http://articles.adsabs.harvard.edu//full/1993BASI...21....1B/0000001.000.h
 
 [3] Jacques F´ejoz. (--). The N-body problem. 09/20/2019, from Universit´e Paris-Dauphine & Observatoire de Paris Link: https://www.ceremade.dauphine.fr/~fejoz/Articles/Fejoz_2014_nbp.pdf
 
-[4] J.D. Mireles James. (2007). Celestial Mechanics Notes Set 1: Introduction to the N-Body Problem. 09/20/2019, de -- Link: http://cosweb1.fau.edu/~jmirelesjames/introductionNotes.pdf
+[4] J.D. Mireles James. (2007). Celestial Mechanics Notes Set 1: Introduction to the N-Body Problem. 09/20/2019, Link: http://cosweb1.fau.edu/~jmirelesjames/introductionNotes.pdf
 
 [5] --. (2018). WHAT IS THE N-BODY PROBLEM?. 09/20/2019, Link: https://gereshes.com/2018/05/07/what-is-the-n-body-problem/
 
 [6] Douglas C. Heggie. (2005). The Classical Gravitational N-Body Problem. 09/20/2019, from Cornell University Link: https://arxiv.org/abs/astro-ph/0503600
 
-[7] Tancred Lindholm,. (1999). N-body algorithms. 09/20/2019, from -- Link: http://www.cs.hut.fi/~ctl/NBody.pdf
+[7] Tancred Lindholm,. (1999). N-body algorithms. 09/20/2019, Web page: http://www.cs.hut.fi/~ctl/NBody.pdf
 
 [8] The Nine Planets. (--). Jupiter. 10/22/2019,  Web page: https://nineplanets.org/jupiter/
 
